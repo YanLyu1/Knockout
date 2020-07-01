@@ -1,0 +1,24 @@
+{
+  "name": "knockout",
+  "version": "1.0.0",
+  "description": "simple goal track app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongojs": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YanLyu1/Knockout.git"
+  },
+  "author": "Yan Lyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YanLyu1/Knockout/issues"
+  },
+  "homepage": "https://github.com/YanLyu1/Knockout#readme"
+}
