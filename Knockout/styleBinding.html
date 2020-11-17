@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Example: Style Binding</title>
+    <!-- <link ref="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5.css.bootstrap.min.css"> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+</head>
+<body>
+    <div data-bind="style: {color: amount() > 10 ? 'red' : 'blue'}">Some Amount</div>
+    <script>
+        var viewModel = {
+            amount: ko.observable(9)
+        }
+
+        viewModel.amount(12);
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Example: Custom Binding</title>
+    <!-- <link ref="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5.css.bootstrap.min.css"> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+</head>
+<body>
+    <h1 data-bind="changeColor: color">Change Color Example</h1>
+    <select data-bind="value: color">
+        <option value = "black">black</option>
+        <option value = "red">red</option>
+        <option value = "blue">blue</option>
+        <option value = "green">green</option>
+        <option value = "yellow">yellow</option>
+    </select>
+
+    <br>
+
+    <h1 data-bind="textFadeIn: msg">Text FadeIn Example</h1>
+    <input type = "text" data-bind="value: msg">
+
+    <script>
+        ko.bindingHandlers.changeColor = {
+            update: function(element, valueAccessor){
+                var element = $(element);
+                var value = valueAccessor();
+                var valueUnwrapped = ko.unwrap(value);
+                element.css('color', valueUnwrapped);
+            }
+        }
+
+        ko.bindingHandlers.textFadeIn = {
+            update: function(element, valueAccessor){
+                $(element).hide();
+                ko.bindingHandlers.text.update(element, valueAccessor);
+                $(element).fadeIn();
+            }
+        }
+        var viewModel = {
+            color: ko.observable(),
+            msg: ko.observable("Text FadeIn Example")
+        }
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

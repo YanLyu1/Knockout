@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Example: JS Refresher</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+</head>
+<body>
+    <ul id = "people">
+        <input id = "firstName" type = "text">
+        <input id = "lastName" type = "text">
+        <button id = "addPerson" type = "text"> Add </button>
+    </ul>
+    <script>
+        var firstName = 'John';
+        // alert(firstName);
+        var lastName = 'Doe';
+        var fullName = firstName + ' ' + lastName;
+        // alert(fullName);
+
+        var person = {
+            firstName: 'Steve',
+            lastName: 'Sanders',
+            address: {
+                street: '30 main st',
+                city: 'New York'
+            },
+            age: 29
+        }
+
+        // alert(person.address.city);
+
+        var people = [
+            {firstName: 'Dawn', lastName: 'Smith'},
+            {firstName: 'Brian', lastName: 'Donovan'},
+            {firstName: 'Carlos', lastName: 'Diaz'}
+        ]
+
+        // alert(people[1].firstName);
+
+        // for(i = 0; i < people.length; i++){
+        //     // console.log(people[i].firstName + ' ' + people[i].lastName);
+        //     $('#people').append('<li>' + people[i].firstName + ' ' + people[i].lastName + '</li>');
+        // }
+
+        $.each(people, function(index, value){
+            $('#people').append('<li>' + people[index].firstName + ' ' + people[index].lastName + '</li>');
+        });
+        
+        $('#addPerson').click(function(){
+            people.push({
+                firstName: $('#firstName').val(),
+                lastName : $('#lastName').val()
+            });
+            console.log(people);
+        })
+    </script>
+</body>
+</html>>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Example: Click Binding</title>
+    <!-- <link ref="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5.css.bootstrap.min.css"> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+</head>
+<body>
+    <ul data-bind="foreach: users">
+        <li>
+            <span data-bind="text: $data"></span>
+            <button data-bind="click: $parent.removeUser">Remove</button>
+        </li>
+    </ul>
+    <script>
+        function viewModel(){
+            var self = this;
+            self.users = ko.observableArray(['John', 'Lanc', 'Dan']);
+
+            self.removeUser = function(user){
+                self.users.remove(user);
+            }
+        }
+
+        ko.applyBindings(new viewModel());
+    </script>
+</body>
+</html>

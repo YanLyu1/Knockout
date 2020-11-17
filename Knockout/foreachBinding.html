@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Example: For Each Binding</title>
+    <!-- <link ref="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5.css.bootstrap.min.css"> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+</head>
+<body>
+    <h1>Employees</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Id</th>
+                <th>Employee Name</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: employees">
+            <tr data-bind="if: id">                 <!-- //当id存在的时候才显示 -->
+                <td data-bind="text: id"></td>
+                <td data-bind="text: name"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Customers</h1>
+    <ul data-bind="foreach: customers">
+        <li><span data-bind="text: $data"></span></li>
+    </ul>
+    <script>
+        var employees = ko.observableArray([
+            {id: "e100", name: "Tom Richards"},
+            {id: null, name: "Janice Johnson"},
+            {id: "e102", name: "Paul Roberts"},
+        ]);
+
+        var customers = ko.observableArray(["John Doe", "Tom Smith", "Eric Williams"]);
+        ko.applyBindings();
+    </script>
+</body>
+</html>

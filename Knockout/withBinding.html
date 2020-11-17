@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Example: For Each Binding</title>
+    <!-- <link ref="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5.css.bootstrap.min.css"> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+</head>
+<body>
+    <h1 data-bind="text: city"></h1>
+    <p data-bind="with: coords">                        <!--  如果不用with的话，就不会显示经纬度 -->
+        Latitude: <span data-bind="text: lat"></span>
+        Longitude: <span data-bind="text: lon"></span>
+    </p>
+    <script>
+        var viewModel = {
+            city: "Bostom",
+            coords: {
+                lat: 42.3601,
+                lon: 71.0581
+            }
+        }
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>
